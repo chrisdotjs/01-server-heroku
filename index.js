@@ -17,7 +17,7 @@ async function startApolloServer() {
     apolloServer.applyMiddleware({ app })
     app.use(cors())
     dotenv.config()
-    app.use((req, res) => { res.send("Express server is running")})
+    app.use((req, res) => { res.send("Express server is running!")})
     const PORT = process.env.PORT || 8080
 
     try {
