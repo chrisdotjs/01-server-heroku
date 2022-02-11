@@ -17,10 +17,10 @@ async function startApolloServer() {
     apolloServer.applyMiddleware({ app, cors: false })
     app.use(cors({
         optionsSuccessStatus: 200,
-        origin: '*',
-//        origin: "http://localhost:3000",
-//        origin: "https://01-client-netlify.netlify.app/",
-//        origin: "https://chrisdotjs.github.io/01-client-netlify/",
+//        origin: '*',
+        origin: "http://localhost:3000",
+        origin: "https://01-client-netlify.netlify.app/",
+        origin: "https://chrisdotjs.github.io/01-client-netlify/",
         credentials: true
     }))
     dotenv.config()
