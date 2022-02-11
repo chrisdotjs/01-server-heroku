@@ -8,6 +8,12 @@ import resolvers from './graphql/resolvers/resolvers.js'
 
 async function startApolloServer() {
     const app = express()
+    const corsOptions = {
+        origin: "*",
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        preflightContinue: false,
+        optionsSuccessStatus: 204,
+    }
     // server constructor
     const apolloServer = new ApolloServer({ 
         typeDefs,
@@ -15,14 +21,7 @@ async function startApolloServer() {
     })
     await apolloServer.start()
     apolloServer.applyMiddleware({ app, cors: false })
-    app.use(cors({
-/*        optionsSuccessStatus: 200,
-//        origin: '*',
-        origin: "http://localhost:3000",
-        origin: "https://01-client-netlify.netlify.app/",
-        origin: "https://chrisdotjs.github.io/01-client-netlify/",
-        credentials: true */
-    }))
+    app.use(cors(corsOptions))
     dotenv.config()
     app.use((req, res) => { res.send("Express server is running!")})
     const PORT = process.env.PORT || 8080
