@@ -15,7 +15,12 @@ async function startApolloServer() {
     })
     await apolloServer.start()
     apolloServer.applyMiddleware({ app })
-    app.use(cors())
+    app.use(cors({
+        optionsSuccessStatus: 200,
+//        origin: "http://localhost:3000",
+        origin: "https://01-client-netlify.netlify.app/",
+//        origin: "https://chrisdotjs.github.io/01-client-netlify/"
+    }))
     dotenv.config()
     app.use((req, res) => { res.send("Express server is running!")})
     const PORT = process.env.PORT || 8080
