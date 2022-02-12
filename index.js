@@ -8,12 +8,6 @@ import resolvers from './graphql/resolvers/resolvers.js'
 
 async function startApolloServer() {
     const app = express()
-    const corsOptions = {
-        origin: "*",
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        preflightContinue: false,
-        optionsSuccessStatus: 204,
-    }
     // server constructor
     const apolloServer = new ApolloServer({ 
         typeDefs,
